@@ -1,4 +1,4 @@
-## Connecting to Cassandra Db in an Scala ecosystems 
+## Connecting to Cassandra in an Scala ecosystems 
 
 For any project in this repository you will need to install the following softwares:
 
