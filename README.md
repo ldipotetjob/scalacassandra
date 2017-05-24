@@ -13,3 +13,12 @@ Have been implemented the following dml command:
 * SELECT
 
 All previous command can be easily custumized to your own model.
+
+
+
+
+
+
+
+https://mojitoverdeintw.blogspot.co.uk/
+https://mojitoverde.blogspot.co.uk/
