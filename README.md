@@ -22,13 +22,6 @@ Enjoy :+1:
 
 
 
-
-
-
-
-
-
-
 https://mojitoverdeintw.blogspot.com 
 
 https://mojitoverde.blogspot.com
