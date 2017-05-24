@@ -15,6 +15,15 @@ Have been implemented the following dml command:
 All previous command can be easily custumized to your own model.
 
 
+**Every package in the source code have a file(package.txt) that explain the  core of 
+the specific package.**  
+
+Enjoy :+1:
+
+
+
+
+
 
 
 
