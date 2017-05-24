@@ -20,5 +20,6 @@ All previous command can be easily custumized to your own model.
 
 
 
-https://mojitoverdeintw.blogspot.co.uk/
-https://mojitoverde.blogspot.co.uk/
+https://mojitoverdeintw.blogspot.com 
+
+https://mojitoverde.blogspot.com
