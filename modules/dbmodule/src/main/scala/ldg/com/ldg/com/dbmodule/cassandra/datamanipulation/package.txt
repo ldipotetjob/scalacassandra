@@ -1,0 +1,56 @@
+package ldg.com.dbmodule.cassandra.datamanipulation
+
+=====================================================================
+
+ref:
+in the below site you can ask for an specific api, in our case we hav ask for datastax api
+http://www.programcreek.com/java-api-examples/
+
+
+===========================CONNECTION================================
+
+This module is relate for connection:
+
+ConnConf is an Object that emulate a Singleton. We must create this object when de application
+begin and kill it in 2 causes:
+
+- When the application end
+- When some error occurs that not let you connect to database
+
+
+In ConnConf object we add :
+
+  private val config = ConfigFactory.load()
+
+  private val hosts = config.getStringList("cassandra.host").toList
+  private val keyspace = config.getString("cassandra.keyspace")
+  private val username = config.getString("cassandra.username")
+  private val password = config.getString("cassandra.password")
+
+For recommendations of the datastax drivers specifications  we must have more than one contact point.
+
+ConfigFactory is from play and used for read configuration files BUT up to you the way as you add
+those credentials.
+
+===============================INSERTION=======================================
+
+The most optimal way to do the INSERT is without checking its status, an inefficient way but that can
+be considered although not recommended by apache is to use the IF EXIST clause.
+
+    //insert without check status
+    //Resulset.wasApplied always return true
+    qb.values(names,values)
+
+    //insert if Not exists de row in other case
+    //throw a NoHostAvailableException
+    qb.ifNotExists().values(names,values)
+    ref. about NOT use this clause:
+
+    http://cassandra.apache.org/doc/latest/cql/dml.html#insert
+    http://www.datastax.com/dev/blog/lightweight-transactions-in-cassandra-2-0
+
+
+
+
+
+

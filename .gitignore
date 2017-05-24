@@ -1,0 +1,13 @@
+# Ignore files for Cassandra POC project #
+##########################################
+
+/project/target/
+/target/
+/modules/dbmodule/target/
+/.idea
+*.class
+/.idea/
+.idea
+
+#we are in english: https://mojitoverdeintw.blogspot.com/
+#we are in spanish: https://mojitoverde.blogspot.com/
