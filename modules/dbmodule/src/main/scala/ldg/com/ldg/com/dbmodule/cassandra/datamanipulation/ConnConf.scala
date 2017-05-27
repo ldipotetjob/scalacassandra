@@ -21,9 +21,6 @@ object ConnConf {
 
   import scala.util.{Try, Success, Failure}
 
-  trait Con1 {
-
-  }
   case class CassandraSession(failures:Option[FailureTrait],session:Option[Session])
   case class CassandraCluster(failures:Option[FailureTrait],session:Option[Cluster])
 
