@@ -18,9 +18,6 @@ trait DataManipulations {
 
   /**
     * Emulate INSERT
-    *
-    *
-    *
     */
   def insertOP[A <:Insertable ](objectToInsert: A): String
 
