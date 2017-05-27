@@ -7,8 +7,6 @@ import ldg.com.dbmodule.cassandra.datamanipulation.wrappers.{InsertWrapper, Sele
 import ldg.com.dbmodule.model.Match
 import ldg.com.implicitdb.conversions.ImplicitCassandra.{rowToMatch,ListOf}
 
-
-
 /**
   * Created by ldipotet on 10/4/17.
   *
