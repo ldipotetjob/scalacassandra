@@ -20,8 +20,6 @@ import ldg.com.dbmodule.model.{Insertable, ConvertVal, Match}
 case class ConnectionWithSingleFactorOperation(session:Session,contactPoint: String = "127.0.0.1") extends Connection{
   /**
     * Emulate SELECT
-    *
-    * @return
     */
   val timeOfWaiting = 20 second
 
@@ -59,9 +57,7 @@ case class ConnectionWithSingleFactorOperation(session:Session,contactPoint: Str
   }
 
   /**
-    *
     * Emulate INSERT
-    *
     */
 override def insertOP[A <:Insertable](objectToInsert: A): String = {
 
