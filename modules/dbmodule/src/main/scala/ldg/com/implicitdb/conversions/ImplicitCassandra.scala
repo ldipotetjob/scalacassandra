@@ -15,12 +15,9 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 import scala.collection.JavaConversions._
 
-
 /**
-  * https://stackoverflow.com/questions/19776508/scala-implicit-conversion-from-generic-type-to-second-generic-type
   * Created by ldipotet on 3/5/17.
   */
-
 
 trait Converter[A <: Insertable, B <: ConvertedInsertable] {
   def convert(a : A) : B
