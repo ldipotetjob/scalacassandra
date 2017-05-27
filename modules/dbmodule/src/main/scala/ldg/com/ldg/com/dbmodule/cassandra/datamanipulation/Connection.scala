@@ -4,7 +4,6 @@ import com.datastax.driver.core.{ResultSet, Row, Session}
 import ldg.com.dbmodule.cassandra.datamanipulation.wrappers.SelectWrapper
 import scala.concurrent.{Await, Future}
 
-//import ldg.com.implicitdb.conversions.ImplicitCassandra.{resultSetFutureToScala,rowToMatch}
 import ldg.com.implicitdb.conversions.ImplicitCassandra.{resultSetFutureToScala,rowToMatch,ListOf}
 import scala.concurrent.duration._
 
