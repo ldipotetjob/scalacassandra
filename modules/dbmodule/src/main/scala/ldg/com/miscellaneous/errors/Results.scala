@@ -1,7 +1,5 @@
 package ldg.com.miscellaneous.errors
 
-//import com.typesafe.config.ConfigException.Null
-
 /**
   * Created by ldipotet on 7/4/17.
   */
