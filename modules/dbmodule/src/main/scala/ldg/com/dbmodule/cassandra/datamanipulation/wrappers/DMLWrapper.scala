@@ -21,7 +21,6 @@ case class SelectWrapper[A: TypeTag](pattern:String) extends  DataBaseDataManipu
 
   override def executeDml: (Connection) => Any = connnection=>connnection.selectOP(pattern)
 
-  //override def _pattern: String = pattern
 }
 
 case class InsertWrapper[A<:Insertable](objectToInsert:A) extends  DataBaseDataManipulations[A]{
@@ -41,8 +40,3 @@ case class InsertWrapper[A<:Insertable](objectToInsert:A) extends  DataBaseDataM
   override def unapply(obj: Any): A = obj.asInstanceOf[A]
 
 }
-
-/*
-(Connection) => Any = {
-  connection => connection.keys(keyPattern)
-}*/
