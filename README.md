@@ -4,18 +4,18 @@ For any project in this repository you will need to install the following softwa
 
 * jdk 1.7+
 * scala 2.11.x
-* sbt
+* sbt 0.13.11+
 * Cassandra 3.3.x
 
-Have been implemented the following dml command:
+Have been implemented the following dml commands:
 
 * INSERT
 * SELECT
 
-All previous command can be easily custumized to your own model.
+All previous commands can be easily custumized to your own model.
 
 
-**Every package in the source code have a file(package.txt) that explain the  core of 
+**Every package in the source code have a file(package.txt) that explain the core of 
 the specific package.**  
 
 Enjoy :+1:
