@@ -13,6 +13,9 @@ import java.io.Closeable
   * Share this seesion during lifetime of application
   *
   * ref. http://www.datastax.com/dev/blog/4-simple-rules-when-using-the-datastax-drivers-for-cassandra
+  * better solution can be implements if we are using RESTfull with playframework. In that case you can 
+  * create class ConnConf with @Singleton instead of object ConnConf. And then we can inject the class 
+  * when it be necessary.
   *
   */
 
