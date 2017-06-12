@@ -30,13 +30,9 @@ case class InsertWrapper[A<:Insertable](objectToInsert:A) extends  DataBaseDataM
   override def executeDml: (Connection) => Any = {connnection=>connnection.insertOP[A](objectToInsert)}
 
   /**
-  * Extractor of the result of operations
-  *
-  * j is the object that is being extracted
-  *            //@tparam S  object's type to extract
-  * @return if object can be extracted return Option(Extracted object) if Don't return None. Implement
-  *         in the future : Try[] and in case of Failure return the exception
-  */
+    * Extractor the result of an operation of Type A
+    * @return if object can be extracted return Option(Extracted object) 
+    */
   override def unapply(obj: Any): A = obj.asInstanceOf[A]
 
 }
