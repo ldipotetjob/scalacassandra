@@ -1,0 +1,43 @@
+package ldg.com.dbmodule
+
+          ***************************************
+          * The scala element :                 *
+          *                                     *
+          *   - object Team                     *
+          *   - case class Match                *
+          *                                     *
+          *   For model the table created below *
+          ***************************************
+
+===================CASSANDRA TABLE ============================
+
+
+CREATE TABLE footballstatistics.footbastatsleaguetest (
+    league int PRIMARY KEY,
+    awaygoals int,
+    awaygoalsplayer map<text, text>,
+    awayteam text,
+    dategame timestamp,
+    homegoal int,
+    homegoalsplayer map<text, text>,
+    hometeam text,
+    matchweek text
+) WITH bloom_filter_fp_chance = 0.01
+    AND caching = {'keys': 'ALL', 'rows_per_partition': 'NONE'}
+    AND comment = 'Contains stats for europe football'
+    AND compaction = {'class': 'org.apache.cassandra.db.compaction.SizeTieredCompactionStrategy', 'max_threshold': '32', 'min_threshold': '4'}
+    AND compression = {'chunk_length_in_kb': '64', 'class': 'org.apache.cassandra.io.compress.LZ4Compressor'}
+    AND crc_check_chance = 1.0
+    AND dclocal_read_repair_chance = 0.1
+    AND default_time_to_live = 0
+    AND gc_grace_seconds = 864000
+    AND max_index_interval = 2048
+    AND memtable_flush_period_in_ms = 0
+    AND min_index_interval = 128
+    AND read_repair_chance = 0.0
+    AND speculative_retry = '99PERCENTILE';
+
+======================= Example of CQL Insert ==================
+
+INSERT INTO footbastatsleaguetest (league,awaygoals,awaygoalsplayer,awayteam,dategame,homegoal,homegoalsplayer,hometeam,matchweek)
+VALUES (55,1,{'Nigel Clough':' 31'' '},'Nottingham Forest',715286700000,3,{'Ian Crook':' 2'' ','Lee Power':' 76'' ','David Phillips':' 89'' '},'Norwich City','MW 3');

@@ -1,0 +1,38 @@
+package ldg.com.cassandra.appoperations
+
+Provides classes and traits for emulate the Data Manipulation in Cassandra
+  ref of operations: http://cassandra.apache.org/doc/latest/cql/dml.html
+
+  Our Stye Guide ref: http://docs.scala-lang.org/style/scaladoc.html
+
+
+  == trait CassandraOperations ==> you must define here all the operations that will be
+                                    performed in our database.
+
+      In this example:
+
+       getAllMatch: Get all Matchs stored in Cassandra DataBase
+       insertMatch: Insert an specific Match in Cassandra DataBase
+
+      == If you need to perform more operations on the database you must define them here
+
+  == class CassandraOperationsImpl ==> implement all operations declared in CassandraOperations
+
+      For this implementation it need implement the DM(Data Manipulation) Operations. For do that use:
+
+            case class SelectWrapper
+            case class InsertWrapper
+
+            The previous 2 case class are generic and NOT change through different implementations, you can
+            see the explanation in the package: com.ldg.dbmodule.datamanipulation.wrappers
+
+      ==> in this class you will use two implicit conversions because queries always return List[Row] and
+                we need a list of our specific Custom List so for do that we need 2 implicit conversion:
+
+                   - an implicit conversion that convert Row => Match
+                   - an Implict conversion that convert List[x] => List[Y]
+
+                   these ares the implicit com.ldg.implicitdb.conversions.ImplicitCassandra.{ListOf, rowToMatch} and
+                   the explanations are in the corresponding package.
+
+  Finally both class and trait change in every implementation because are specific for every applications.

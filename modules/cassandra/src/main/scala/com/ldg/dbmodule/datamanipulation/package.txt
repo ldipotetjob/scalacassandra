@@ -1,0 +1,62 @@
+package com.ldg.dbmodule.datamanipulation
+
+== this is DM(Data Manipulation) operations package.
+
+== case class ConnectionWithSingleFactorOperation ==> It is case class implement connections for execute Simple statements.
+    Its mean NOT BATCH Statement so you with this connection you only can execute single operation, in our case an Insert
+    or a Select. If  you implement other operations(Update or Delete) using this pattern you only can execute one of those
+    operation at the same time.
+
+http://docs.datastax.com/en/developer/java-driver/3.1/manual/statements/simple/
+
+
+    TODO Create BATCH OPERATION ==> You can Fork this repository and add this implementation
+
+==  case class RuntimeDm ==> This
+    It is the case class that make the orchestation of all DM operations
+
+
+
+== wrappers ==>
+
+    ========Queries=========
+
+    case class SelectWrapper ==> Generic class for all select operations, you pass select statement as a parameter.
+                                 Model the Select Operation.
+
+
+    ========INSERTION=========
+
+
+    case class InsertWrapper ==> Generic class for all insert operations, you only need and implicit conversion that
+                                 let understand your model.
+                                 Model the Insert Operation.
+
+    We only can insert in Cassandra tables <Insertable> Objects
+
+    == <Insertable> Objects ==>
+
+    Every <Insertable> Objects must have an implicit conversion that will let convert object in the
+    required format needed for the dataStax driver for the insert Command.
+
+The most optimal way to do the INSERT is without checking its status, an inefficient way but that can
+be considered although not recommended by apache is to use the IF EXIST clause.
+
+    //insert without check status
+    //Resulset.wasApplied always return true
+    qb.values(names,values)
+
+    //insert if Not exists de row in other case
+    //throw a NoHostAvailableException
+    qb.ifNotExists().values(names,values)
+    ref. about NOT use this clause:
+
+    http://cassandra.apache.org/doc/latest/cql/dml.html#insert
+    http://www.datastax.com/dev/blog/lightweight-transactions-in-cassandra-2-0
+
+
+    TODO UpdateWrapper operation and DeleteWrapper Operations ==> You can Fork this repository and add those implementations
+
+
+
+

@@ -1,0 +1,22 @@
+package ldg.com.miscellaneous.errors
+
+/**
+ *
+ * Provide the model of error in a functional way
+ *
+ *  Always deal the exception under this model, except in case of FATAL error in those case
+ *  we throw the specific exception and exit of the code.
+ *
+ * =================================
+ *  Kind of errors:
+ *
+ *  Unexpected error: will down the app
+ *
+ *  ConnectionError: We can deal with it, no necessarily shutdown de app, we can deal trying to
+ *  reconnect data base
+ *
+ *  ConnException: Any other error Not related with connections eg. when we try to construct some
+ *  model. In that case we can try again without kill the cluster and session instance.
+ *
+ *
+ */
