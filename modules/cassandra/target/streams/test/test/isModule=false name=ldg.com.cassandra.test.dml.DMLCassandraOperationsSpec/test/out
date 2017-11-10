@@ -1,0 +1,5 @@
+[0m[[0minfo[0m] [0m[32mDMLCassandraOperationsSpec:[0m[0m
+[0m[[0minfo[0m] [0m[32mInsert operation if was success [0m[0m
+[0m[[0minfo[0m] [0m[32m- should return a boolean true value[0m[0m
+[0m[[0minfo[0m] [0m[32mSelect Operation [0m[0m
+[0m[[0minfo[0m] [0m[32m- should return a proper Record inserted in other test[0m[0m
