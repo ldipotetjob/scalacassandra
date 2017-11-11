@@ -26,9 +26,9 @@ This project is a template for a DML statements. Specifically It implements Data
 * jdk 1.7+ -> how check java version: java -version
 * scala 2.11.x -> how check scala version: scala -version
 * sbt 0.13.11+ -> how check sbt version: sbt about
-* Cassandra 3.3.x -> how check sbt version: bin/nodetool version 
+* Cassandra 3.3.x+ -> how check sbt version: bin/nodetool version 
 
-note: if cassandra is installed as a service, it is NOT necessary to go to the installation directory of cassandra, it will be enough: **nodetool version** from anywhere in your system.
+note: *If cassandra is installed as a service, it is NOT necessary to go to the installation directory of cassandra, it will be enough: **nodetool version** from anywhere in your system.*
 
 ### Installation ###
 
@@ -36,28 +36,64 @@ note: if cassandra is installed as a service, it is NOT necessary to go to the i
 * go to root project
 * call the following scripts(for Linux \[Ubuntu - Centos] or OSX):
 
+Script files are more complex because we need to make several verificacion about process that are running under OS before execute any process. We need to check afer every execution what exactly happened before and so on. But if you feel confortable in OSX/Linux terminal you only need to execute in your terminal following lines of code: 
 
+You must go to Cassadra installation directory: 
 
-### Launching ###
+* Create keyspace for our test:
 
-You have several rest sevices to call:
+```bash
+## keyspace name
+KEYSPACETEST=keyspacetest 
 
-This is [the route file](https://github.com/ldipotetjob/restfulinplay/blob/master/modules/apirest/conf/apirest.routes) and it has commented several examples on how call all services exposed in this project.
-The commented examples has the following structure:
+local dd_create_keyspace="CREATE KEYSPACE ${KEYSPACETEST} WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};" 
 
-\# pattern: 
+echo ${dd_create_keyspace} | bin/cqlsh
+```
 
-\# example: 
+if the previous process was success:
 
-You can paste the \# example: in your **terminal** in case of **curl** o in your **browser** in case **http**
+* Create table for our test:
 
+```bash
+## table 
+local dd_create_table="CREATE TABLE dbtest.footballtest (
+    league int PRIMARY KEY,
+    awaygoals int,
+    awaygoalsplayer map<text, text>,
+    awayteam text,
+    dategame timestamp,
+    homegoal int,
+    homegoalsplayer map<text, text>,
+    hometeam text,
+    matchweek text) WITH comment='Contains stats for europe football leagues';"
+    
+echo ${dd_create_table} | bin/cqlsh    
+```
+note: *If cassandra **is installed as a service** in your OS, it is NOT necessary to go to the installation directory of cassandra, so you can replace a piece in the previous lines and instead of **bin/cqlsh** can use **bin/cqlsh**. So you can execute the previous line from every where.*
+
+For windows users is mandatory and for OSX or Linux users who wish to use the cqlsh console, these are the two commands to be executed from the Cassandra console:
+
+```sql
+CREATE KEYSPACE keyspacetest WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+
+CREATE TABLE dbtest.footballtest (
+    league int PRIMARY KEY,
+    awaygoals int,
+    awaygoalsplayer map<text, text>,
+    awayteam text,
+    dategame timestamp,
+    homegoal int,
+    homegoalsplayer map<text, text>,
+    hometeam text,
+    matchweek text) WITH comment='Contains test stats ';
+```
+Now you are ready to work.
 
 ### Testing ###
 
 * go to root project
-* type in terminal: sbt test
-
-video: [running test](https://youtu.be/s-jO1PFaUR4)
+* type in terminal: sbt compile test
 
 The basic information is [here on gitHub](https://github.com/ldipotetjob/restfulinplay/blob/master/package.txt) and contains the main project information.
 
@@ -67,63 +103,3 @@ The basic information is [here on gitHub](https://github.com/ldipotetjob/restful
 <br>
 <br>
 https://mojitoverdeintw.blogspot.com 
-
-
-
-
-## Connecting to Cassandra in an Scala ecosystem 
-
-For any project in this repository you will need to install the following softwares:
-
-* jdk 1.7+
-* scala 2.11.x
-* sbt 0.13.11+
-* Cassandra 3.3.x
-
-Have been implemented the following dml commands:
-
-* INSERT
-* SELECT
-
-All previous commands can be easily custumized to your own model.
-
-
-**Every package in the source code have a file(package.txt) that explain the core of 
-the specific package.**  
-
-Enjoy :+1:
-
-
-
-https://mojitoverdeintw.blogspot.com 
-
-https://mojitoverde.blogspot.com
-
-
-## Connecting to Cassandra in an Scala ecosystem 
-
-For any project in this repository you will need to install the following softwares:
-
-* jdk 1.7+
-* scala 2.11.x
-* sbt 0.13.11+
-* Cassandra 3.3.x
-
-Have been implemented the following dml commands:
-
-* INSERT
-* SELECT
-
-All previous commands can be easily custumized to your own model.
-
-
-**Every package in the source code have a file(package.txt) that explain the core of 
-the specific package.**  
-
-Enjoy :+1:
-
-
-
-https://mojitoverdeintw.blogspot.com 
-
-https://mojitoverde.blogspot.com
