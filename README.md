@@ -3,23 +3,14 @@
 
 # Implementation of DML in an Scala ecosystem connecting to Cassandra #
 
-This project is a template for a DML. Specifically It implements Data Manipulation Statement \[INSERT - SELECT ]
+This project is a template for a DML statements. Specifically It implements Data Manipulation Statement \[INSERT - SELECT ]
 
 ## What will you find here? ##
 
-* A basic multi module architecture that will let you implement and process Restful WebServices in Scala programming language, it can be a template for any multi module Play Framework project.
-
-* An implementation of HTTP protocol Content-Negotiation:
-    * Accept
-    * Content-Type
-    * You can add here any other header fields involved in content-negotiation.
-    
-* How generate CSV response depending of Content-Negotiation:
-    * Implementing custom template using twirl engine for return a CSV file depending of the Accept header field.
-    * Implement at the same time json responses.
+* A basic template that implement INSERT and QUERY statements. It contain implementation an test module.
     
 * How implement TDD in our development process:
-    * We have create the base of Spec with FlatSpec style: We have NOT covered the whole lines of code but we have created enoguh test suites for give you an idea of how to make with the rest. We have covered at least Controllers, action,implicit conversions and services. 
+    * We have create the base of Spec with FlatSpec style: We have NOT covered the whole lines of code but we have created enoguh test suites for give you an idea of how to make with the rest. In our case case we connect to an specific Keyspace - table  
     
 ## What you will not find here, but you should ##
 
@@ -35,72 +26,79 @@ This project is a template for a DML. Specifically It implements Data Manipulati
 * jdk 1.7+ -> how check java version: java -version
 * scala 2.11.x -> how check scala version: scala -version
 * sbt 0.13.11+ -> how check sbt version: sbt about
+* Cassandra 3.3.x+ -> how check sbt version: bin/nodetool version 
+
+note: *If cassandra is installed as a service, it is NOT necessary to go to the installation directory of cassandra, it will be enough: **nodetool version** from anywhere in your system.*
 
 ### Installation ###
 
 * clone repository
 * go to root project
-* type in terminal: sbt run
+* call the following scripts(for Linux \[Ubuntu - Centos] or OSX):
 
-video: [running sbt](https://youtu.be/AWP7ODqjYmI)
+Script files are more complex because we need to make several verificacion about process that are running under OS before execute any process. We need to check afer every execution what exactly happened before and so on. But if you feel confortable in OSX/Linux terminal you only need to execute in your terminal following lines of code: 
 
-### Launching ###
+You must go to Cassadra installation directory: 
 
-You have several rest sevices to call:
+* Create keyspace for our test:
 
-This is [the route file](https://github.com/ldipotetjob/restfulinplay/blob/master/modules/apirest/conf/apirest.routes) and it has commented several examples on how call all services exposed in this project.
-The commented examples has the following structure:
+```bash
+## keyspace name
+KEYSPACETEST=keyspacetest 
 
-\# pattern: 
+local dd_create_keyspace="CREATE KEYSPACE ${KEYSPACETEST} WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};" 
 
-\# example: 
+echo ${dd_create_keyspace} | bin/cqlsh
+```
 
-You can paste the \# example: in your **terminal** in case of **curl** o in your **browser** in case **http**
+if the previous process was success:
 
+* Create table for our test:
+
+```bash
+## table 
+local dd_create_table="CREATE TABLE dbtest.footballtest (
+    league int PRIMARY KEY,
+    awaygoals int,
+    awaygoalsplayer map<text, text>,
+    awayteam text,
+    dategame timestamp,
+    homegoal int,
+    homegoalsplayer map<text, text>,
+    hometeam text,
+    matchweek text) WITH comment='Contains stats for europe football leagues';"
+    
+echo ${dd_create_table} | bin/cqlsh    
+```
+note: *If cassandra **is installed as a service** in your OS, it is NOT necessary to go to the installation directory of cassandra, so you can replace a piece in the previous lines and instead of **bin/cqlsh** can use **bin/cqlsh**. So you can execute the previous line from every where.*
+
+For windows users is mandatory and for OSX or Linux users who wish to use the cqlsh console, these are the two commands to be executed from the Cassandra console:
+
+```sql
+CREATE KEYSPACE keyspacetest WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+
+CREATE TABLE dbtest.footballtest (
+    league int PRIMARY KEY,
+    awaygoals int,
+    awaygoalsplayer map<text, text>,
+    awayteam text,
+    dategame timestamp,
+    homegoal int,
+    homegoalsplayer map<text, text>,
+    hometeam text,
+    matchweek text) WITH comment='Contains test stats ';
+```
+Now you are ready to work.
 
 ### Testing ###
 
+This Test suite basically **insert** a record and then execute a **query** for get the record inserted previously. You can use this platform for you own objects, only need the appropriate implicit conversions.
+
 * go to root project
-* type in terminal: sbt test
-
-video: [running test](https://youtu.be/s-jO1PFaUR4)
-
-The basic information is [here on gitHub](https://github.com/ldipotetjob/restfulinplay/blob/master/package.txt) and contains the main project information.
-
+* type in terminal: sbt compile test
 
 **Each package in the source code has a file (package.txt) that explains the fundamentals of that specific package.**  
 <br>
 <br>
 <br>
 https://mojitoverdeintw.blogspot.com 
-
-
-
-
-## Connecting to Cassandra in an Scala ecosystem 
-
-For any project in this repository you will need to install the following softwares:
-
-* jdk 1.7+
-* scala 2.11.x
-* sbt 0.13.11+
-* Cassandra 3.3.x
-
-Have been implemented the following dml commands:
-
-* INSERT
-* SELECT
-
-All previous commands can be easily custumized to your own model.
-
-
-**Every package in the source code have a file(package.txt) that explain the core of 
-the specific package.**  
-
-Enjoy :+1:
-
-
-
-https://mojitoverdeintw.blogspot.com 
-
-https://mojitoverde.blogspot.com
