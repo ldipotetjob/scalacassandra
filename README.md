@@ -3,7 +3,7 @@
 
 # Implementation of DML in an Scala ecosystem connecting to Cassandra #
 
-This project is a template for a DML statements. Specifically It implements Data Manipulation Statement \[INSERT - SELECT ]
+This project is a template for a DML statements. Specifically It implements Data Manipulation Statement \[INSERT-SELECT ]
 
 ## What will you find here? ##
 
