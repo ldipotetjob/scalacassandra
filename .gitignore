@@ -8,6 +8,7 @@
 *.class
 /.idea/
 .idea
+.DS_Store
 
 #we are in english: https://mojitoverdeintw.blogspot.com/
 #we are in spanish: https://mojitoverde.blogspot.com/
