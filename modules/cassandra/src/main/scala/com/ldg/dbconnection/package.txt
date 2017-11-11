@@ -17,6 +17,9 @@ begin and kill it in 2 causes:
 - When the application end
 - When some error occurs that not let you connect to database
 
+== case class Config ==> This class is use for pass host,keyspace,username and password for create the session. It is
+                         just for the example, is recommended do that via ConfigFactory
+
 
 In ConnConf object we add (now is commented) :
 
