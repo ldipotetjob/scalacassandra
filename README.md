@@ -92,11 +92,10 @@ Now you are ready to work.
 
 ### Testing ###
 
+This Test suite basically **insert** a record and then execute a **query** for get the record inserted previously. You can use this platform for you own objects, only need the appropriate implicit conversions.
+
 * go to root project
 * type in terminal: sbt compile test
-
-The basic information is [here on gitHub](https://github.com/ldipotetjob/restfulinplay/blob/master/package.txt) and contains the main project information.
-
 
 **Each package in the source code has a file (package.txt) that explains the fundamentals of that specific package.**  
 <br>
