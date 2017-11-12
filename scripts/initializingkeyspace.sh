@@ -37,7 +37,7 @@ local dd_create_table="CREATE TABLE dbtest.footballtest (
     hometeam text,
     matchweek text) WITH comment='Contains stats for europe football leagues';"
 
-if [ -z "$installation_cassandra_directory" ]; then 
+if [ -z "$installation_cassandra_directory"]; then 
 	## Cassandra could be installed as a service or in Path
 	## Call function to create keyspace
 	## echo ${dd_create_keyspace} | cqlsh

@@ -1,23 +1,23 @@
 <img width="928" alt="captura de pantalla 2017-10-07 a las 15 09 49" src="https://user-images.githubusercontent.com/8100363/31313078-665da9a6-abcf-11e7-9266-932880ea6ed2.png">
 
 
-# Implementation of DML in an Scala ecosystem connecting to Cassandra #
+# DML implementation in a Scala ecosystem connecting to Cassandra #
 
-This project is a template for a DML statements. Specifically It implements Data Manipulation Statement \[INSERT-SELECT ]
+This project is a template for a DML statements. Specifically it implements Data Manipulation Statement \[INSERT-SELECT]
 
 ## What will you find here? ##
 
-* A basic template that implement INSERT and QUERY statements. It contain implementation an test module.
+* A basic template that implement INSERT and QUERY statements which contains implementation and test module.
     
-* How implement TDD in our development process:
-    * We have create the base of Spec with FlatSpec style: We have NOT covered the whole lines of code but we have created enoguh test suites for give you an idea of how to make with the rest. In our case case we connect to an specific Keyspace - table  
+* How to implement TDD in our development process:
+    * We have created the base of Spec with FlatSpec style: We have NOT covered the whole lines of code but we have created enough test suites for give you an idea of how to make it with the rest. In our case we will connect to a specific Keyspace - table.  
     
 ## What you will not find here, but you should ##
 
 * ErrorHandler implementation as indicate play framework specification. 
-* Internationalization of messages.
+* Messages Internationalization.
 * LogHandler: 
-    * Although we register some log, must exist a log handler, which could be a trait. This trait could be implemented by all those classes that, at some point, can generate a log.
+    * Although we register some log, must exist a log handler which could be a trait. This trait could be implemented by all those classes that, at some point, could generate a log.
    
 ## Requirements, Installation, Launching, Testing ##
 
@@ -33,10 +33,9 @@ note: *If cassandra is installed as a service, it is NOT necessary to go to the 
 ### Installation ###
 
 * clone repository
-* go to root project
-* call the following scripts(for Linux \[Ubuntu - Centos] or OSX):
-
-Script files are more complex because we need to make several verificacion about process that are running under OS before execute any process. We need to check afer every execution what exactly happened before and so on. But if you feel confortable in OSX/Linux terminal you only need to execute in your terminal following lines of code: 
+* go to the root project
+* We need to create a Keyspace and a table for testing, so for do that call [the following scripts](https://github.com/ldipotetjob/restfulinplay/blob/master/modules/apirest/conf/apirest.routes)(for Linux \[Ubuntu - Centos] or OSX):
+the script file is more complex because we need to make several verificacion about process that are running under the OS before execute any process. We need to check afer every execution what exactly happened before and so on. BUT if you feel comfortable in OSX/Linux terminal you just need to execute in your terminal following lines of code: 
 
 You must go to Cassadra installation directory: 
 
@@ -70,9 +69,9 @@ local dd_create_table="CREATE TABLE dbtest.footballtest (
     
 echo ${dd_create_table} | bin/cqlsh    
 ```
-note: *If cassandra **is installed as a service** in your OS, it is NOT necessary to go to the installation directory of cassandra, so you can replace a piece in the previous lines and instead of **bin/cqlsh** can use **bin/cqlsh**. So you can execute the previous line from every where.*
+note: *If cassandra **is installed as a service** in your OS, it is NOT necessary to go to the installation directory of cassandra, so you can replace a piece in the previous lines and instead of **bin/cqlsh** can use **bin/cqlsh**. So you can execute the previous line from everywhere.*
 
-For windows users is mandatory and for OSX or Linux users who wish to use the cqlsh console, these are the two commands to be executed from the Cassandra console:
+For windows users is mandatory and for OSX or Linux users who wish to use the cqlsh console, these are two commands to be executed from the Cassandra console:
 
 ```sql
 CREATE KEYSPACE keyspacetest WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
@@ -88,11 +87,11 @@ CREATE TABLE dbtest.footballtest (
     hometeam text,
     matchweek text) WITH comment='Contains test stats ';
 ```
-Now you are ready to work.
+Now you are ready to test the work you have done.
 
 ### Testing ###
 
-This Test suite basically **insert** a record and then execute a **query** for get the record inserted previously. You can use this platform for you own objects, only need the appropriate implicit conversions.
+This Test suite basically **insert** a record and then execute a **query** for get the record inserted previously. You can use this platform for you own objects, you just need the appropriate implicit conversions.
 
 * go to root project
 * type in terminal: sbt compile test
@@ -101,4 +100,5 @@ This Test suite basically **insert** a record and then execute a **query** for g
 <br>
 <br>
 <br>
+
 https://mojitoverdeintw.blogspot.com 
