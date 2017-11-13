@@ -97,13 +97,13 @@ This Test suite basically **insert** a record and then execute a **query** for g
 * go to root project
 * type in terminal: sbt compile test
 
+**Each package in the source code has a file (package.txt) that explains the fundamentals of that specific package.**  
+
+
 If you want to create your own connections we have here [an example](https://github.com/ldipotetjob/scalacassandra/blob/develop/modules/cassandra/src/main/scala/com/ldg/dbconnection/RecipesConnection.scala) of how modify an create your owns configurations objects. Anyway remember that the best way is always by configurations files.
 
 <br>
 <br>
-
-**Each package in the source code has a file (package.txt) that explains the fundamentals of that specific package.**  
-
 <br>
 <br>
 <br>
