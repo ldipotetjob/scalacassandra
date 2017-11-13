@@ -3,11 +3,11 @@
 
 # Implementation of DML in an Scala ecosystem connecting to Cassandra #
 
-This project is a template for a DML statements. Specifically It implements Data Manipulation Statement \[INSERT - SELECT ]
+This project is a template for a DML statements. Specifically It implements Data Manipulation Statement \[INSERT - SELECT]. If you want to implement a project that connects with ** Cassandra ** in an Ecosystem scala and because of its simplicity does not want to have dependencies with any *Orm*, the use of this template can give you a good starting point for your project.
 
 ## What will you find here? ##
 
-* A basic template that implement INSERT and QUERY statements. It contain implementation an test module.
+* A basic template that implement INSERT and QUERY statements. It contain implementation on test module.
     
 * How implement TDD in our development process:
     * We have create the base of Spec with FlatSpec style: We have NOT covered the whole lines of code but we have created enoguh test suites for give you an idea of how to make with the rest. In our case case we connect to an specific Keyspace - table  
@@ -19,7 +19,7 @@ This project is a template for a DML statements. Specifically It implements Data
 * LogHandler: 
     * Although we register some log, must exist a log handler, which could be a trait. This trait could be implemented by all those classes that, at some point, can generate a log.
    
-## Requirements, Installation, Launching, Testing ##
+## Requirements, Installation, Testing ##
 
 ### Requirements ###
 
@@ -34,9 +34,9 @@ note: *If cassandra is installed as a service, it is NOT necessary to go to the 
 
 * clone repository
 * go to root project
-* call the following scripts(for Linux \[Ubuntu - Centos] or OSX):
+* [call the following script](https://github.com/ldipotetjob/scalacassandra/blob/master/scripts/initializingkeyspace.sh)(for Linux \[Ubuntu - Centos] or OSX):
 
-Script files are more complex because we need to make several verificacion about process that are running under OS before execute any process. We need to check afer every execution what exactly happened before and so on. But if you feel confortable in OSX/Linux terminal you only need to execute in your terminal following lines of code: 
+Script files are more complex because we need to make several verifications about processes that are running under OS before execute any process. We need to check after every execution what exactly happened before and so on. But if you feel confortable in OSX/Linux terminal you only need to execute in your terminal following lines of code: 
 
 You must go to Cassadra installation directory: 
 
@@ -44,7 +44,7 @@ You must go to Cassadra installation directory:
 
 ```bash
 ## keyspace name
-KEYSPACETEST=keyspacetest 
+KEYSPACETEST=dbtest 
 
 local dd_create_keyspace="CREATE KEYSPACE ${KEYSPACETEST} WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};" 
 
@@ -75,7 +75,7 @@ note: *If cassandra **is installed as a service** in your OS, it is NOT necessar
 For windows users is mandatory and for OSX or Linux users who wish to use the cqlsh console, these are the two commands to be executed from the Cassandra console:
 
 ```sql
-CREATE KEYSPACE keyspacetest WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
+CREATE KEYSPACE dbtest WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};
 
 CREATE TABLE dbtest.footballtest (
     league int PRIMARY KEY,
@@ -88,7 +88,7 @@ CREATE TABLE dbtest.footballtest (
     hometeam text,
     matchweek text) WITH comment='Contains test stats ';
 ```
-Now you are ready to work.
+Now your environment for work is ready.
 
 ### Testing ###
 
@@ -98,6 +98,12 @@ This Test suite basically **insert** a record and then execute a **query** for g
 * type in terminal: sbt compile test
 
 **Each package in the source code has a file (package.txt) that explains the fundamentals of that specific package.**  
+
+
+If you want to create your own connections we have here [an example](https://github.com/ldipotetjob/scalacassandra/blob/develop/modules/cassandra/src/main/scala/com/ldg/dbconnection/RecipesConnection.scala) of how modify an create your owns configurations objects. Anyway remember that the best way is always by configurations files.
+
+<br>
+<br>
 <br>
 <br>
 <br>
