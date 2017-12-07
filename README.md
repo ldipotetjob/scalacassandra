@@ -46,9 +46,9 @@ You must go to Cassadra installation directory:
 ## keyspace name
 KEYSPACETEST=dbtest 
 
-local dd_create_keyspace="CREATE KEYSPACE ${KEYSPACETEST} WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};" 
+local dd_create_keyspace="CREATE KEYSPACE $KEYSPACETEST WITH replication = {'class': 'SimpleStrategy', 'replication_factor' : 1};" 
 
-echo ${dd_create_keyspace} | bin/cqlsh
+echo "$dd_create_keyspace" | bin/cqlsh
 ```
 
 if the previous process was success:
@@ -68,7 +68,7 @@ local dd_create_table="CREATE TABLE dbtest.footballtest (
     hometeam text,
     matchweek text) WITH comment='Contains stats for europe football leagues';"
     
-echo ${dd_create_table} | bin/cqlsh    
+echo "$dd_create_table" | bin/cqlsh    
 ```
 note: *If cassandra **is installed as a service** in your OS, it is NOT necessary to go to the installation directory of cassandra, so you can replace a piece in the previous lines and instead of **bin/cqlsh** can use **bin/cqlsh**. So you can execute the previous line from every where.*
 
